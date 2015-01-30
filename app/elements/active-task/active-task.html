@@ -1,0 +1,36 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="active-task" attributes="task">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      .swatch {
+        background-color: #999;
+        width: 40px;
+        height: 40px;
+      }
+      .task {
+        display: flex;
+      }
+      .task-name {
+        color: #333;
+      }
+    </style>
+      <div class="task" layout horizontal>
+        <div class="swatch" style="background-color: {{task.swatch}}"></div>
+        <div class="content">
+          <input type="checkbox" checked="{{task.completed}}">
+          <span class="task-name">{{task.name}}</span>
+          <span class="due">{{task.due}}</span>
+      </div>
+  </template>
+  <script>
+    (function () {
+      Polymer({
+        // define element prototype here
+      });
+    })();
+  </script>
+</polymer-element>

@@ -1,0 +1,56 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../active-task/active-task.html">
+
+<polymer-element name="task-collection" attributes="tasks">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h4>{{totalTasks}} tasks</h4>
+    <input type="text" placeholder="Enter a task" value="{{newTask}}">
+    <button on-tap="{{addTask}}">Add task</button>
+    <template repeat="{{task in tasks}}">
+      <active-task task="{{task}}"></active-task>
+    </template>
+  </template>
+  <script>
+    (function () {
+      Polymer({
+        // define element prototype here
+        tasks: [
+          {name: "Task 1",
+          swatch: "red",
+          due: "Tomorrow",
+          completed: true},
+          {name: "Task 3",
+          swatch: "blue",
+          due: "Tomorrow",
+          completed: false},
+          {name: "Task 5",
+          swatch: "red",
+          due: "Day aftyer Tomorrow",
+          completed: false},
+          {name: "Task 6",
+          swatch: "green",
+          due: "Future",
+          completed: false}
+        ],
+        get totalTasks() {
+          return this.tasks.length;
+        },
+        addTask: function() {
+          var task_ = this.newTask;
+          this.tasks.unshift({
+            name: task_,
+            swatch: "red",
+            due: "Tomorrow",
+            completed: false
+          });
+          this.newTask = "";
+        }
+      });
+    })();
+  </script>
+</polymer-element>
